@@ -45,10 +45,10 @@ namespace ZeroUnpacker
             fileInfo m_fileInfo;
             FHDInfo m_FHDInfo;
             string directoryName = Path.GetDirectoryName(FHD_name);
-            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.Read);//打开FHD文件流
+            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.Read);//Open FHD file stream
             BinaryReader fp = new BinaryReader(fStream);
 
-            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//打开IMG_BD文件流
+            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//Open the IMG_BD file stream
             long img_size = new FileInfo(IMG_NAME).Length;
 
             FileStream ini = new FileStream(String.Format("{0}\\zero.ini", directoryName), FileMode.OpenOrCreate, FileAccess.Write);
@@ -88,15 +88,15 @@ namespace ZeroUnpacker
                     long NAME_POS = m_fileInfo.BLOCK3_OFFSET + i * 8;
                     long DEC_POS = m_fileInfo.BLOCK0_OFFSET + i * 4;
                     fp.BaseStream.Seek(NAME_POS, SeekOrigin.Begin);
-                    long destfolderNameOffset = fp.ReadUInt32();//获得文件夹名称地址
-                    long destfileNameOffset = fp.ReadUInt32();//获得子文件名称地址
+                    long destfolderNameOffset = fp.ReadUInt32();//Get folder name address
+                    long destfileNameOffset = fp.ReadUInt32();//Get the address of the subfile name
                     fp.BaseStream.Seek(destfolderNameOffset, SeekOrigin.Begin);
-                    string destfolderName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//获得文件夹名称
+                    string destfolderName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//Get folder name
                     fp.BaseStream.Seek(destfileNameOffset, SeekOrigin.Begin);
-                    string destfileName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//获得文件名
+                    string destfileName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//Get file name
 
                     fp.BaseStream.Seek(LBA_POS, SeekOrigin.Begin);
-                    m_FHDInfo.LBA_OFFSET = fp.ReadUInt32() * 0x800;//获取LBA地址
+                    m_FHDInfo.LBA_OFFSET = fp.ReadUInt32() * 0x800;//Get the LBA address
                     fp.BaseStream.Seek(DEC_POS, SeekOrigin.Begin);
                     m_FHDInfo.DecompressedSize = fp.ReadUInt32();
 
@@ -106,9 +106,9 @@ namespace ZeroUnpacker
                     if ((m_FHDInfo.CompressedSize & 1) == 1)
                     {
                         //File was Compressed
-                        m_FHDInfo.Compress_Mark = true; //压缩标志
+                        m_FHDInfo.Compress_Mark = true; //Compression flag
                     }
-                    m_FHDInfo.CompressedSize = m_FHDInfo.CompressedSize >> 1;//获取压缩文件长度
+                    m_FHDInfo.CompressedSize = m_FHDInfo.CompressedSize >> 1;//Get compressed file length
 
                     /*Console.WriteLine(String.Format("{0} , {1},{2},{3} , {4},{5}", Convert.ToString(m_FHDInfo.LBA_OFFSET, 16),
                                                                            Convert.ToString(m_FHDInfo.CompressedSize, 16),
@@ -145,10 +145,10 @@ namespace ZeroUnpacker
             fileInfo m_fileInfo;
             FHDInfo m_FHDInfo;
             string directoryName = Path.GetDirectoryName(FHD_name);
-            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.Read);//打开FHD文件流
+            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.Read);//Open FHD file stream
             BinaryReader fp = new BinaryReader(fStream);
 
-            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//打开IMG_BD文件流
+            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//Open the IMG_BD file stream
             FileStream IMG_Stream = new FileStream(IMG_NAME, FileMode.Open, FileAccess.Read);
             BinaryReader img = new BinaryReader(IMG_Stream);
             long img_size = new FileInfo(IMG_NAME).Length;
@@ -188,15 +188,15 @@ namespace ZeroUnpacker
                     long NAME_POS = m_fileInfo.BLOCK3_OFFSET + i * 8;
                     long DEC_POS = m_fileInfo.BLOCK0_OFFSET + i * 4;
                     fp.BaseStream.Seek(NAME_POS, SeekOrigin.Begin);
-                    long destfolderNameOffset = fp.ReadUInt32();//获得文件夹名称地址
-                    long destfileNameOffset = fp.ReadUInt32();//获得子文件名称地址
+                    long destfolderNameOffset = fp.ReadUInt32();//Get folder name address
+                    long destfileNameOffset = fp.ReadUInt32();//Get the address of the subfile name
                     fp.BaseStream.Seek(destfolderNameOffset, SeekOrigin.Begin);
-                    string destfolderName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//获得文件夹名称
+                    string destfolderName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//Get folder name
                     fp.BaseStream.Seek(destfileNameOffset, SeekOrigin.Begin);
-                    string destfileName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//获得文件名
+                    string destfileName = Encoding.ASCII.GetString(fp.ReadBytes(64)).Split('\0')[0];//Get file name
                     
                     fp.BaseStream.Seek(LBA_POS, SeekOrigin.Begin);
-                    m_FHDInfo.LBA_OFFSET = fp.ReadUInt32() * 0x800;//获取LBA地址
+                    m_FHDInfo.LBA_OFFSET = fp.ReadUInt32() * 0x800;//Get the LBA address
                     fp.BaseStream.Seek(DEC_POS, SeekOrigin.Begin);
                     m_FHDInfo.DecompressedSize = fp.ReadUInt32();
 
@@ -205,9 +205,9 @@ namespace ZeroUnpacker
                     m_FHDInfo.Compress_Mark = false;
                     if ((m_FHDInfo.CompressedSize & 1) == 1) {
                         //File was Compressed
-                        m_FHDInfo.Compress_Mark = true; //压缩标志
+                        m_FHDInfo.Compress_Mark = true; //Compression flag
                     }
-                    m_FHDInfo.CompressedSize = m_FHDInfo.CompressedSize >> 1;//获取压缩文件长度
+                    m_FHDInfo.CompressedSize = m_FHDInfo.CompressedSize >> 1;//Get compressed file length
 
                     /*Console.WriteLine(String.Format("{0} , {1},{2},{3} , {4},{5}", Convert.ToString(m_FHDInfo.LBA_OFFSET, 16),
                                                                            Convert.ToString(m_FHDInfo.CompressedSize, 16),

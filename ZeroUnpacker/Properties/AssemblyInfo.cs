@@ -4,9 +4,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-// 有关程序集的一般信息由以下
-// 控制。更改这些特性值可修改
-// 与程序集关联的信息。
+// General information about the assembly consists of the following
+// control. Changing these characteristic values ​​can be modified
+// Information associated with the assembly.
 [assembly: AssemblyTitle("ZeroUnpacker")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -16,40 +16,40 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-//将 ComVisible 设置为 false 将使此程序集中的类型
-//对 COM 组件不可见。  如果需要从 COM 访问此程序集中的类型，
-//请将此类型的 ComVisible 特性设置为 true。
+//Setting ComVisible to false will make the type in this assembly
+//Not visible to COM components. If you need to access the types in this assembly from COM,
+//Please set the ComVisible property of this type to true.
 [assembly: ComVisible(false)]
 
-//若要开始生成可本地化的应用程序，请
-//<PropertyGroup> 中的 .csproj 文件中
-//例如，如果您在源文件中使用的是美国英语，
-//使用的是美国英语，请将 <UICulture> 设置为 en-US。  然后取消
-//对以下 NeutralResourceLanguage 特性的注释。  更新
-//以下行中的“en-US”以匹配项目文件中的 UICulture 设置。
+//To start building a localizable application, please
+//<PropertyGroup> in the .csproj file
+//For example, if you use American English in the source file,
+//U.S. English is used, please set <UICulture> to en-US. Then cancel
+//Comment on the following NeutralResourceLanguage feature. Update
+//"En-US" in the following line to match the UICulture setting in the project file.
 
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
 
 
 [assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, //主题特定资源词典所处位置
-                                     //(当资源未在页面
-                                     //或应用程序资源字典中找到时使用)
-    ResourceDictionaryLocation.SourceAssembly //常规资源词典所处位置
-                                              //(当资源未在页面
-                                              //、应用程序或任何主题专用资源字典中找到时使用)
+    ResourceDictionaryLocation.None, //The location of the subject-specific resource dictionary
+                                     //(When the resource is not on the page
+                                     //Or used when found in the application resource dictionary)
+    ResourceDictionaryLocation.SourceAssembly //The location of the general resource dictionary
+                                              //(When the resource is not on the page
+                                              //, Application or any theme-specific resource dictionary found)
 )]
 
 
-// 程序集的版本信息由下列四个值组成: 
+// The version information of the assembly consists of the following four values: 
 //
-//      主版本
-//      次版本
-//      生成号
-//      修订号
+//      Major version
+//      Minor version
+//      Build number
+//      Amendment No
 //
-//可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
-// 方法是按如下所示使用“*”: :
+//You can specify all of these values, or you can use the default values ​​of "Generation Number" and "Revision Number",
+// The method is to use "*" as shown below: :
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

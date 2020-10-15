@@ -8,7 +8,7 @@ using System.Windows;
 namespace ZeroUnpacker
 {
     /// <summary>
-    /// App.xaml 的交互逻辑
+    /// App.xaml Interaction logic
     /// </summary>
     public partial class App : Application
     {

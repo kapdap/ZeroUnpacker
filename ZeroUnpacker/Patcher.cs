@@ -64,26 +64,26 @@ namespace ZeroUnpacker
 
         public static bool PatchIMG(string FHD_name)
         {
-            string directoryName = Path.GetDirectoryName(FHD_name);//获取FHD文件目录
+            string directoryName = Path.GetDirectoryName(FHD_name);//Get FHD file directory
             string patchFolderName = String.Format("{0}\\Patch", directoryName);
 
             if (!File.Exists(patchFolderName))
-            //如果Patch文件夹不存在，创建Patch文件夹
+            //If the Patch folder does not exist，Create Patch folder
             {
                 Directory.CreateDirectory(String.Format("{0}\\Patch", directoryName));
             }
-            FatalFrame.FHD2INI(FHD_name);//从当前选择的FHD文件导出ini表
+            FatalFrame.FHD2INI(FHD_name);//Export ini table from currently selected FHD file
             List<FHDInfo> list = new List<FHDInfo>();
-            GetIndexInfo(String.Format("{0}\\zero.ini", directoryName), list);//获取struct 列表
+            GetIndexInfo(String.Format("{0}\\zero.ini", directoryName), list);//Get struct list
 
             fileInfo m_fileInfo;
-            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.ReadWrite);//打开FHD文件流
+            FileStream fStream = new FileStream(FHD_name, FileMode.Open, FileAccess.ReadWrite);//Open FHD file stream
             BinaryReader fp = new BinaryReader(fStream);
             BinaryWriter fhd_writer = new BinaryWriter(fStream);
             fp.BaseStream.Seek(0, SeekOrigin.Begin);
             fhd_writer.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//打开IMG_BD文件流
+            string IMG_NAME = String.Format("{0}\\IMG_BD.bin", directoryName);//Open the IMG_BD file stream
             FileStream IMG_Stream = new FileStream(IMG_NAME, FileMode.Open, FileAccess.ReadWrite);
             BinaryWriter img = new BinaryWriter(IMG_Stream);
 
@@ -114,7 +114,7 @@ namespace ZeroUnpacker
                 for (int i = 0; i < list.Count; i++)
                 {
                     FHDInfo m_FHDInfo = list[i];
-                    //根据当前ID获取FHD的指针地址
+                    //Get the FHD pointer address according to the current ID
                     long LBA_POS = m_fileInfo.BLOCK4_OFFSET + m_FHDInfo.FHD_ID * 4;
                     long SIZE_POS = m_fileInfo.BLOCK2_OFFSET + m_FHDInfo.FHD_ID * 4;
                     long NAME_POS = m_fileInfo.BLOCK3_OFFSET + m_FHDInfo.FHD_ID * 8;
@@ -122,10 +122,10 @@ namespace ZeroUnpacker
                     string pfName = String.Format("{0}\\Patch\\{1}{2}", directoryName,
                                                                     m_FHDInfo.FolderName.Replace("..", ""),
                                                                     m_FHDInfo.FileName);
-                    FileStream pfStream = new FileStream(pfName, FileMode.Open, FileAccess.ReadWrite);//打开patch file文件流
+                    FileStream pfStream = new FileStream(pfName, FileMode.Open, FileAccess.ReadWrite);//Open patch file file stream
                     BinaryReader pfReader = new BinaryReader(pfStream);
                     pfReader.BaseStream.Seek(0, SeekOrigin.Begin);
-                    if (m_FHDInfo.LBA_OFFSET == -1)//文件追加到IMG_BD末尾
+                    if (m_FHDInfo.LBA_OFFSET == -1)//The file is appended to the end of IMG_BD
                     {
 
                         img.BaseStream.Seek(0, SeekOrigin.End);

@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace ZeroUnpacker
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// MainWindow.xaml Interaction logic
     /// </summary>
     /// 
     public partial class MainWindow : Window
@@ -36,22 +36,22 @@ namespace ZeroUnpacker
                 Config.bUseExternalDeLess = true;
             }
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "选择FHD文件";
-            openFileDialog.Filter = "FHD文件|*.FHD";
+            openFileDialog.Title = "Select FHD file";
+            openFileDialog.Filter = "FHD file|*.FHD";
             openFileDialog.FileName = string.Empty;
             if (openFileDialog.ShowDialog().Value)
             {
                 string filename = openFileDialog.FileName;
                 FatalFrame.GetFHDInfo(filename);
             }
-            MessageBox.Show("操作完毕");
+            MessageBox.Show("Operation completed");
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "选择FHD文件";
-            openFileDialog.Filter = "FHD文件|*.FHD";
+            openFileDialog.Title = "Select FHD file";
+            openFileDialog.Filter = "FHD file|*.FHD";
             openFileDialog.FileName = string.Empty;
             if (openFileDialog.ShowDialog().Value)
             {
@@ -59,11 +59,11 @@ namespace ZeroUnpacker
                 bool result = Patcher.PatchIMG(filename);
                 if (result)
                 {
-                    MessageBox.Show("补丁完成");
+                    MessageBox.Show("Patch complete");
                 }
                 else
                 {
-                    MessageBox.Show("补丁失败");
+                    MessageBox.Show("Patch failed");
                 }
             }
         }
@@ -78,8 +78,8 @@ namespace ZeroUnpacker
             string imlPath = "";
             string isoPath = "";
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "选择FHD文件";
-            openFileDialog.Filter = "iml文件|*.iml";
+            openFileDialog.Title = "Select FHD file";
+            openFileDialog.Filter = "iml file|*.iml";
             openFileDialog.FileName = string.Empty;
             if (openFileDialog.ShowDialog().Value)
             {

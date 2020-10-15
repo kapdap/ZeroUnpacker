@@ -11,19 +11,19 @@ namespace ZeroUnpacker
     {
         /*
         ISO 9660 + UDF
-        [需要修改]7086L long (LE) ISO大小 = value*0x800 + 0x800
-        7886L long (LE) ISO大小 = value*0x800 + 0x800,重复一次
-        [需要修改]8000L 01 43 44 30 30 31 01 00 .CD001. PLAYSTATION起始标志
-        [需要修改]8050L long (LE + BE 共8字节) ISO大小= value * 0x800
-        809EL long (LE + BE 共8字节)文件LBA索引区域地址 index_offset = value * 0x800
+        [Need to be modified]7086L long (LE) ISO size = value*0x800 + 0x800
+        7886L long (LE) ISO size = value*0x800 + 0x800,repeat
+        [Need to be modified] 8000L 01 43 44 30 30 31 01 00 .CD001. PLAYSTATIONS tart flag
+        [Need to be modified] 8050L long (LE + BE 8 bytes in total) ISO size = value * 0x800
+        809EL long (LE + BE 8 bytes in total) File LBA index area address index_offset = value * 0x800
 
-        [需要修改]110C0L  ISO大小 = value*0x800 + 0x83000
-        [需要修改]190C0L  ISO大小 = value*0x800 + 0x83000
-        [需要修改]20054L  ISO大小 = value*0x800 + 0x83000
-        20078L long 文件数
+        [Need to be modified] 110C0L  ISO size = value*0x800 + 0x83000
+        [Need to be modified] 190C0L  ISO size = value*0x800 + 0x83000
+        [Need to be modified] 20054L  ISO size = value*0x800 + 0x83000
+        20078L long Number of files
         Seek(index_offset,0)//Path Tables
         {   
-            文件数
+            Number of files
             {
                     ???
             }

@@ -154,7 +154,7 @@
     <Content Include="BuildISO\AutoPatchIML.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="BuildISO\把ZERO3.FHD和IMG_BD放进来，运行AutoPatchIML.txt">
+    <Resource Include="BuildISO\Put ZERO3.FHD and IMG_BD in and run AutoPatchIML.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="DeLESS.exe">
